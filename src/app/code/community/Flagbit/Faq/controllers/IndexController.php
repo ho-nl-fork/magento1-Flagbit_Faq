@@ -31,4 +31,13 @@ class Flagbit_Faq_IndexController extends Mage_Core_Controller_Front_Action
 	{
 		$this->loadLayout()->renderLayout();
 	}
+
+	/**
+	 * Displays a category of questions
+	 */
+	public function categoryAction()
+	{
+		$this->loadLayout()->renderLayout();
+	}
+
 }

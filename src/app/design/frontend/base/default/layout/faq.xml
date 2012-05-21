@@ -47,4 +47,10 @@
             <block type="flagbit_faq/frontend_detail" name="faq_detail" template="faq/detail.phtml"/>
         </reference>
     </faq_index_show>
+
+    <faq_index_category>
+        <reference name="content">
+            <block type="flagbit_faq/frontend_category" name="faq_category" template="faq/category.phtml"/>
+        </reference>
+    </faq_index_category>
 </layout>
