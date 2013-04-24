@@ -14,7 +14,7 @@
  * @package    Flagbit_Faq
  * @author     Flagbit GmbH & Co. KG <magento@flagbit.de>
  */
-class Flagbit_Faq_Model_Mysql4_Category extends Mage_Core_Model_Mysql4_Abstract
+class Flagbit_Faq_Model_Resource_Category extends Mage_Core_Model_Resource_Db_Abstract
 {
     /**
      * Constructor
@@ -49,7 +49,7 @@ class Flagbit_Faq_Model_Mysql4_Category extends Mage_Core_Model_Mysql4_Abstract
      * Sets the creation and update timestamps
      *
      * @param Mage_Core_Model_Abstract $object Current faq category
-     * @return Flagbit_Faq_Model_Mysql4_Category
+     * @return Flagbit_Faq_Model_Resource_Category
      */
     protected function _beforeSave(Mage_Core_Model_Abstract $object)
     {

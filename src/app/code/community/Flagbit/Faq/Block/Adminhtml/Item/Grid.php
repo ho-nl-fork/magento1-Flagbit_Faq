@@ -58,7 +58,7 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
                 'index' => 'faq_id' ));
         
         if (!Mage::app()->isSingleStoreMode()) {
-            $this->addColumn('store_id', 
+            $this->addColumn('store_id',
                     array (
                             'header' => Mage::helper('cms')->__('Store view'), 
                             'index' => 'store_id', 

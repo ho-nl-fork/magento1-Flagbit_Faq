@@ -14,7 +14,7 @@
  * @package    Flagbit_Faq
  * @author     Flagbit GmbH & Co. KG <magento@flagbit.de>
  */
-class Flagbit_Faq_Model_Mysql4_Category_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Flagbit_Faq_Model_Resource_Category_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
     protected $_previewFlag;
     
@@ -31,7 +31,7 @@ class Flagbit_Faq_Model_Mysql4_Category_Collection extends Mage_Core_Model_Mysql
      * Add Filter by store
      *
      * @param int|Mage_Core_Model_Store $store Store to be filtered
-     * @return Flagbit_Faq_Model_Mysql4_Category_Collection
+     * @return Flagbit_Faq_Model_Resource_Category_Collection
      */
     public function addStoreFilter($store)
     {

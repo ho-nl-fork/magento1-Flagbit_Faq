@@ -14,7 +14,21 @@
  * @package    Flagbit_Faq
  * @author     Flagbit GmbH & Co. KG <magento@flagbit.de>
  */
-class Flagbit_Faq_Model_Mysql4_Faq extends Mage_Core_Model_Mysql4_Abstract {
+/**
+ * @method int getFaqId()
+ * @method Flagbit_Faq_Model_Resource_Faq setFaqId(int $faqId)
+ * @method string getQuestion()
+ * @method Flagbit_Faq_Model_Resource_Faq setQuestion(string $question)
+ * @method string getAnswer()
+ * @method Flagbit_Faq_Model_Resource_Faq setAnwer(string $answer)
+ * @method string getCreationTime()
+ * @method Flagbit_Faq_Model_Resource_Faq setCreationTime(string $creationTime)
+ * @method string getUpdateTime()
+ * @method Flagbit_Faq_Model_Resource_Faq setUpdateTime(string $updateTime)
+ * @method int getIsActive()
+ * @method Flagbit_Faq_Model_Resource_Faq setIsActive(int $isActive)
+ */
+class Flagbit_Faq_Model_Resource_Faq extends Mage_Core_Model_Resource_Db_Abstract {
 
 
 	/**

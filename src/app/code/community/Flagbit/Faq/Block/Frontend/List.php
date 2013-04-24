@@ -29,7 +29,7 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
 	 * Returns collection of current FAQ entries
 	 *
 	 * @param int $pageSize
-	 * @return Flagbit_Faq_Model_Mysql_Faq_Collection collection of current FAQ entries
+	 * @return Flagbit_Faq_Model_Mysql4_Faq_Collection collection of current FAQ entries
 	 */
 	public function getFaqCollection($pageSize = null)
 	{

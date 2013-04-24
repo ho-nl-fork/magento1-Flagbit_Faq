@@ -71,7 +71,7 @@ class Flagbit_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Acti
 				return;
 			}
 		}
-		
+
 		$data = Mage::getSingleton('adminhtml/session')->getFormData(true);
 		if (!empty($data)) {
 			$model->setData($data);

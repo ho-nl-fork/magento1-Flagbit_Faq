@@ -38,13 +38,13 @@
     
     <faq_index_index>
         <reference name="content">
-            <block type="flagbit_faq/frontend_list" name="faq_list" template="faq/list.phtml"/>
+            <block type="flagbit_faq/frontend_list" name="faq_list" template="flagbit/faq/list.phtml"/>
         </reference>
     </faq_index_index>
 
     <faq_index_show>
         <reference name="content">
-            <block type="flagbit_faq/frontend_detail" name="faq_detail" template="faq/detail.phtml"/>
+            <block type="flagbit_faq/frontend_detail" name="faq_detail" template="flagbit/faq/detail.phtml"/>
         </reference>
     </faq_index_show>
 </layout>

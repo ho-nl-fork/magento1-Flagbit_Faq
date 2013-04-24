@@ -1,0 +1,9 @@
+# Flagbit_Faq
+src/app/code/community/Flagbit/Faq/                            app/code/community/Flagbit/Faq/
+src/app/etc/modules/*                                          app/etc/modules/
+src/app/design/frontend/base/default/layout/flagbit/*          app/design/frontend/base/default/layout/flagbit/
+src/app/design/frontend/base/default/template/flagbit/*        app/design/frontend/base/default/template/flagbit/
+src/app/design/adminhtml/default/default/layout/flagbit/*      app/design/adminhtml/default/default/layout/flagbit/
+#src/app/design/adminhtml/default/default/template/flagbit/*   app/design/adminhtml/default/default/template/flagbit/
+#js/flagbit/faq/*                                              js/flagbit/faq/
+#skin/frontend/base/default/flagbit/*                          skin/frontend/base/default/flagbit/

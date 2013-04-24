@@ -32,9 +32,10 @@ class Flagbit_Faq_Block_Adminhtml_Item_Edit extends Mage_Adminhtml_Block_Widget_
 		$this->_updateButton('delete', 'label', Mage::helper('flagbit_faq')->__('Delete FAQ item'));
 		
 		$this->_addButton('saveandcontinue', array (
-				'label' => Mage::helper('flagbit_faq')->__('Save and continue edit'), 
-				'onclick' => 'saveAndContinueEdit()', 
-				'class' => 'save' ), -100);
+		    'label' => Mage::helper('flagbit_faq')->__('Save and continue edit'),
+            'onclick' => 'saveAndContinueEdit()',
+            'class' => 'save'
+        ), -100);
 		
 		$this->_formScripts[] = "
             function saveAndContinueEdit(){

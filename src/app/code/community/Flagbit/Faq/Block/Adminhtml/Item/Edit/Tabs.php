@@ -33,22 +33,19 @@ class Flagbit_Faq_Block_Adminhtml_Item_Edit_Tabs extends Mage_Adminhtml_Block_Wi
      * 
      * Adds the tabs to the left tab menu.
      * 
-     * @return Flagbit_Faq_Block_Admin_Edit
+     * @return Flagbit_Faq_Block_Adminhtml_Item_Edit_Tabs
      */
     protected function _prepareLayout()
     {
-        $return = parent::_prepareLayout();
+        parent::_prepareLayout();
 
-        $this->addTab(
-            'main_section', 
-            array(
-                'label' => Mage::helper('flagbit_faq')->__('General information'),
-                'title' => Mage::helper('flagbit_faq')->__('General information'),
-                'content' => $this->getLayout()->createBlock('flagbit_faq/adminhtml_item_edit_tab_main')->toHtml(),
-                'active' => true,
-            )
-        );
+        $this->addTab('main_section', array(
+            'label' => Mage::helper('flagbit_faq')->__('General information'),
+            'title' => Mage::helper('flagbit_faq')->__('General information'),
+            'content' => $this->getLayout()->createBlock('flagbit_faq/adminhtml_item_edit_tab_main')->toHtml(),
+            'active' => true,
+        ));
         
-        return $return;
+        return $this;
     }
 }
