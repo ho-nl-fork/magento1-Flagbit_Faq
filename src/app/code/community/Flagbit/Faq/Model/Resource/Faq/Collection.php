@@ -48,7 +48,7 @@ class Flagbit_Faq_Model_Resource_Faq_Collection extends Mage_Core_Model_Resource
      * Add Filter by category
      * 
      * @param int|Flagbit_Faq_Model_Category $category Category to be filtered
-     * @return Flagbit_Faq_Model_Mysql4_Category_Collection
+     * @return Flagbit_Faq_Model_Resource_Category_Collection
      */
     public function addCategoryFilter($category)
     {

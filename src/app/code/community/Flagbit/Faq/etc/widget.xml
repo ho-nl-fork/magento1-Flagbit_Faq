@@ -1,0 +1,52 @@
+<?xml version="1.0"?><!--
+/**
+ * Flagbit_Faq
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the H&O Commercial License
+ * that is bundled with this package in the file LICENSE_HO.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.h-o.nl/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@h-o.com so we can send you a copy immediately.
+ *
+ * @category    Flagbit
+ * @package     Flagbit_Faq
+ * @copyright   Copyright © 2013 H&O (http://www.h-o.nl/)
+ * @license     H&O Commercial License (http://www.h-o.nl/license)
+ * @author      Paul Hachmang – H&O <info@h-o.nl>
+ */
+-->
+<widgets>
+    <flagbit_faq_category type="flagbit_faq/frontend_list_widget" translate="name description" module="flagbit_faq">
+        <name>FAQ Questions from category</name>
+        <description>Add a list of questions from a category</description>
+        <parameters>
+            <template>
+                <values>
+                    <default translate="label" module="ho_bootstrap">
+                        <value>/flagbit/faq/list/widget/default.phtml</value>
+                        <label>FAQ List Default</label>
+                    </default>
+                </values>
+            </template>
+            <faq_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>FAQ Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>flagbit_faq/adminhtml_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </faq_id>
+        </parameters>
+    </flagbit_faq_category>
+</widgets>

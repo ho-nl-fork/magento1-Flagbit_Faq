@@ -197,4 +197,28 @@ class Flagbit_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Acti
 		// go to grid
 		$this->_redirect('*/*/');
 	}
+
+    /**
+     * Chooser Source action
+     */
+    public function itemChooserAction()
+    {
+        $uniqId = $this->getRequest()->getParam('uniq_id');
+        $pagesGrid = $this->getLayout()->createBlock('flagbit_faq/adminhtml_item_widget_chooser', '', array(
+            'id' => $uniqId,
+        ));
+        $this->getResponse()->setBody($pagesGrid->toHtml());
+    }
+
+    /**
+     * Chooser Source action
+     */
+    public function categoryChooserAction()
+    {
+        $uniqId = $this->getRequest()->getParam('uniq_id');
+        $pagesGrid = $this->getLayout()->createBlock('flagbit_faq/adminhtml_category_widget_chooser', '', array(
+            'id' => $uniqId,
+        ));
+        $this->getResponse()->setBody($pagesGrid->toHtml());
+    }
 }

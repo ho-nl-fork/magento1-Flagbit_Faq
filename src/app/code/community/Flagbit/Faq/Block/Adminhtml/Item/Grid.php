@@ -33,7 +33,7 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
     /**
      * Preparation of the data that is displayed by the grid.
      *
-     * @return Flagbit_Faq_Block_Admin_Grid Self
+     * @return Flagbit_Faq_Block_Adminhtml_Item_Grid Self
      */
     protected function _prepareCollection()
     {
@@ -47,60 +47,62 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
     /**
      * Preparation of the requested columns of the grid
      *
-     * @return Flagbit_Faq_Block_Admin_Grid Self
+     * @return Flagbit_Faq_Block_Adminhtml_Item_Grid Self
      */
     protected function _prepareColumns()
     {
-        $this->addColumn('faq_id', array (
-                'header' => Mage::helper('flagbit_faq')->__('FAQ #'), 
-                'width' => '80px', 
-                'type' => 'text', 
-                'index' => 'faq_id' ));
-        
+        $this->addColumn('faq_id', array(
+            'header' => Mage::helper('flagbit_faq')->__('FAQ #'),
+            'width' => '80px',
+            'type' => 'text',
+            'index' => 'faq_id'
+        ));
+
+        $this->addColumn('question', array(
+            'header' => Mage::helper('flagbit_faq')->__('Question'),
+            'index' => 'question'
+        ));
+
         if (!Mage::app()->isSingleStoreMode()) {
-            $this->addColumn('store_id',
-                    array (
-                            'header' => Mage::helper('cms')->__('Store view'), 
-                            'index' => 'store_id', 
-                            'type' => 'store', 
-                            'store_all' => true, 
-                            'store_view' => true, 
-                            'sortable' => false, 
-                            'filter_condition_callback' => array (
-                                    $this, 
-                                    '_filterStoreCondition' ) ));
+            $this->addColumn('store_id', array(
+                'header' => Mage::helper('cms')->__('Store view'),
+                'index' => 'store_id',
+                'type' => 'store',
+                'store_all' => true,
+                'store_view' => true,
+                'sortable' => false,
+                'filter_condition_callback' => array($this,'_filterStoreCondition')
+            ));
         }
+
+        $this->addColumn('is_active', array(
+            'header' => Mage::helper('flagbit_faq')->__('Active'),
+            'index' => 'is_active',
+            'type' => 'options',
+            'width' => '70px',
+            'options' => array(
+                0 => Mage::helper('flagbit_faq')->__('No'),
+                1 => Mage::helper('flagbit_faq')->__('Yes')
+            )
+        ));
         
-        $this->addColumn('question', array (
-                'header' => Mage::helper('flagbit_faq')->__('Question'), 
-                'index' => 'question' ));
-        
-        $this->addColumn('is_active', 
-                array (
-                        'header' => Mage::helper('flagbit_faq')->__('Active'), 
-                        'index' => 'is_active', 
-                        'type' => 'options', 
-                        'width' => '70px', 
-                        'options' => array (
-                                0 => Mage::helper('flagbit_faq')->__('No'), 
-                                1 => Mage::helper('flagbit_faq')->__('Yes') ) ));
-        
-        $this->addColumn('action', 
-                array (
-                        'header' => Mage::helper('flagbit_faq')->__('Action'), 
-                        'width' => '50px', 
-                        'type' => 'action', 
-                        'getter' => 'getId', 
-                        'actions' => array (
-                                array (
-                                        'caption' => Mage::helper('flagbit_faq')->__('Edit'), 
-                                        'url' => array (
-                                                'base' => 'adminhtml/faq/edit' ), 
-                                        'field' => 'faq_id' ) ), 
-                        'filter' => false, 
-                        'sortable' => false, 
-                        'index' => 'stores', 
-                        'is_system' => true ));
+        $this->addColumn('action', array(
+            'header' => Mage::helper('flagbit_faq')->__('Action'),
+            'width' => '50px',
+            'type' => 'action',
+            'getter' => 'getId',
+            'actions' => array(
+                array(
+                   'caption' => Mage::helper('flagbit_faq')->__('Edit'),
+                   'url' => array('base' => 'adminhtml/faq/edit'),
+                   'field' => 'faq_id'
+                )
+            ),
+            'filter' => false,
+            'sortable' => false,
+            'index' => 'stores',
+            'is_system' => true
+        ));
         
         return parent::_prepareColumns();
     }
@@ -138,7 +140,7 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('adminhtml/faq/edit', array (
+        return $this->getUrl('adminhtml/faq/edit', array(
                 'faq_id' => $row->getFaqId() ));
     }
 
@@ -149,7 +151,7 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getGridUrl()
     {
-        return $this->getUrl('adminhtml/faq/index', array (
+        return $this->getUrl('adminhtml/faq/index', array(
                 '_current' => true ));
     }
 }

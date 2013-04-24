@@ -29,7 +29,7 @@
 	<h1><?php echo $this->__('FAQ'); ?></h1>
 </div>
 
-<?php if ($this->hasFaq()): ?>
+<?php if ($this->getFaqCollection()->count()): ?>
 
 <h2><?php echo $this->__('Questions'); ?></h2>
 <?php if ($this->getCategoryCollection()) : ?>
@@ -69,7 +69,7 @@
 		<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
 	</dt>
 	<dd>
-		<?php echo $faqItem->getAnswer(); ?>
+		<?php echo $this->getAnswerHtml($faqItem); ?>
 	</dd>
 	<?php endforeach; ?>
 </dl>

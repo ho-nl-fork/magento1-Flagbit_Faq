@@ -23,7 +23,7 @@ class Flagbit_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Wid
     public function __construct()
     {
         parent::__construct();
-        $this->setId('faq_grid');
+        $this->setId('category_grid');
         $this->setUseAjax(false);
         $this->setDefaultSort('creation_time');
         $this->setDefaultDir('DESC');
@@ -55,29 +55,31 @@ class Flagbit_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Wid
                 'type' => 'text', 
                 'index' => 'category_id' ));
         
-        if (!Mage::app()->isSingleStoreMode()) {
-            $this->addColumn('store_id',
-                    array (
-                            'header' => Mage::helper('cms')->__('Store view'), 
-                            'index' => 'store_id', 
-                            'type' => 'store', 
-                            'store_all' => true, 
-                            'store_view' => true, 
-                            'sortable' => false, 
-                            'filter_condition_callback' => array (
-                                    $this, 
-                                    '_filterStoreCondition' ) ));
-        }
-        
         $this->addColumn(
             'category_name',
             array(
-                'header' => Mage::helper('flagbit_faq')->__('Category Name'), 
+                'header' => Mage::helper('flagbit_faq')->__('Category Name'),
                 'index' => 'category_name',
             )
         );
-        
-        $this->addColumn('is_active', 
+
+
+        if (!Mage::app()->isSingleStoreMode()) {
+            $this->addColumn('store_id',
+                    array (
+                            'header' => Mage::helper('cms')->__('Store view'),
+                            'index' => 'store_id',
+                            'type' => 'store',
+                            'store_all' => true,
+                            'store_view' => true,
+                            'sortable' => false,
+                            'filter_condition_callback' => array (
+                                    $this,
+                                    '_filterStoreCondition' ) ));
+        }
+
+
+        $this->addColumn('is_active',
                 array (
                         'header' => Mage::helper('cms')->__('Active'), 
                         'index' => 'is_active', 
