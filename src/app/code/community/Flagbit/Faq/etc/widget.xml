@@ -27,7 +27,7 @@
             <template>
                 <values>
                     <default translate="label" module="ho_bootstrap">
-                        <value>/flagbit/faq/list/widget/default.phtml</value>
+                        <value>flagbit/faq/list/widget/default.phtml</value>
                         <label>FAQ List Default</label>
                     </default>
                 </values>

@@ -24,4 +24,36 @@
 class Flagbit_Faq_Block_Frontend_List_Widget extends Mage_Core_Block_Template
 {
 
+    /**
+   	 * Returns collection of current FAQ entries
+   	 *
+   	 * @param int $pageSize
+   	 * @return Flagbit_Faq_Model_Resource_Faq_Collection collection of current FAQ entries
+   	 */
+   	public function getFaqCollection($pageSize = null)
+   	{
+   		if (parent::getFaqCollection() === null) {
+            /* @var $collection Flagbit_Faq_Model_Resource_Faq_Collection */
+   			$collection = Mage::getModel('flagbit_faq/faq')->getCollection()
+   				->addStoreFilter(Mage::app()->getStore())
+                ->addCategoryFilter(1)
+   				->addIsActiveFilter();
+
+   			parent::setFaqCollection($collection);
+   		}
+
+   		return parent::getFaqCollection();
+   	}
+
+
+    /**
+     * @param Flagbit_Faq_Model_Faq $faqItem
+     * @return string
+     */
+    public function getAnswerHtml(Flagbit_Faq_Model_Faq $faqItem) {
+        /* @var $helper Mage_Cms_Helper_Data */
+        $helper = Mage::helper('cms');
+        $processor = $helper->getPageTemplateProcessor();
+        return $processor->filter($faqItem->getAnswer());
+    }
 }
