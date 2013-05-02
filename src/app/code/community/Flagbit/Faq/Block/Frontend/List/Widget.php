@@ -22,6 +22,7 @@
  */
 
 class Flagbit_Faq_Block_Frontend_List_Widget extends Mage_Core_Block_Template
+    implements Mage_Widget_Block_Interface
 {
 
     /**
