@@ -25,6 +25,11 @@
         <description>Add a list of questions from a category</description>
         <parameters>
             <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+                <type>select</type>
+                <value>flagbit/faq/list/widget/default.phtml</value>
                 <values>
                     <default translate="label" module="ho_bootstrap">
                         <value>flagbit/faq/list/widget/default.phtml</value>
