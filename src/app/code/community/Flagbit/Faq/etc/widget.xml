@@ -35,6 +35,10 @@
                         <value>flagbit/faq/list/widget/default.phtml</value>
                         <label>FAQ List Default</label>
                     </default>
+                    <without_title translate="label" module="ho_bootstrap">
+                        <value>flagbit/faq/list/widget/without-title.phtml</value>
+                        <label>FAQ List without Category title</label>
+                    </without_title>
                 </values>
             </template>
             <category_id type="complex" translate="label">

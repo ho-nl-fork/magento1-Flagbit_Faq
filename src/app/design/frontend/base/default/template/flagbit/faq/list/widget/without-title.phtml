@@ -24,7 +24,6 @@
 /** @var $this Flagbit_Faq_Block_Frontend_List_Widget */
 ?>
 <?php if ($this->getFaqCollection()->count()): ?>
-<h2><?php echo $this->getCategory()->getCategoryName() ?></h2>
 <dl class="faq-items">
     <?php /** @var $faqItem Flagbit_Faq_Model_Faq */ ?>
     <?php foreach ($this->getFaqCollection() as $faqItem): ?>
