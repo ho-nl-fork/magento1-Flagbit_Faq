@@ -37,7 +37,7 @@ class Flagbit_Faq_Block_Frontend_List_Widget extends Mage_Core_Block_Template
             /* @var $collection Flagbit_Faq_Model_Resource_Faq_Collection */
    			$collection = Mage::getModel('flagbit_faq/faq')->getCollection()
    				->addStoreFilter(Mage::app()->getStore())
-                ->addCategoryFilter(1)
+                ->addCategoryFilter($this->getCategoryId())
    				->addIsActiveFilter();
 
    			parent::setFaqCollection($collection);
@@ -45,6 +45,16 @@ class Flagbit_Faq_Block_Frontend_List_Widget extends Mage_Core_Block_Template
 
    		return parent::getFaqCollection();
    	}
+
+
+    /**
+     * @return Flagbit_Faq_Model_Category
+     */
+    public function getCategory() {
+        /* @var $category Flagbit_Faq_Model_Category */
+        $category = Mage::getModel('flagbit_faq/category')->load($this->getCategoryId());
+        return $category;
+    }
 
 
     /**
