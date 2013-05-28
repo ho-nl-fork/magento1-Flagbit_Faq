@@ -38,7 +38,7 @@
     
     <faq_index_index>
         <reference name="content">
-            <block type="flagbit_faq/frontend_list" name="faq_list" template="flagbit/faq/list.phtml"/>
+            <block type="flagbit_faq/frontend_list" name="faq_list" template="flagbit/faq/grid.phtml"/>
         </reference>
     </faq_index_index>
 
