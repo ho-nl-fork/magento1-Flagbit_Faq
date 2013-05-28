@@ -29,50 +29,33 @@
 	<h1><?php echo $this->__('FAQ'); ?></h1>
 </div>
 
+<div class="row-fluid">
+
 <?php if ($this->getFaqCollection()->count()): ?>
 
-<h2><?php echo $this->__('Questions'); ?></h2>
-<?php if ($this->getCategoryCollection()) : ?>
-<dl class="faq-list">
-    <?php foreach ($this->getCategoryCollection() as $category) : ?>
-        <dt><?php echo $this->htmlEscape($category->getName()); ?></dt>
-        <dd>
-            <ul class="faq-list">
-                <?php foreach ($this->getItemCollectionByCategory($category) as $item) : ?>
-                <li>
-                    <a href="#faq-item-<?php echo $item->getId() ?>">
-                        <?php echo $this->htmlEscape($item->getQuestion()); ?>
-                    </a>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-        </dd>
-    <?php endforeach; ?>
-</dl>
-<?php else : ?>
-<ul class="faq-list">
-    <?php foreach ($this->getFaqCollection() as $faqItem): ?>
-    <li>
-        <a href="#faq-item-<?php echo $faqItem->getId() ?>">
-            <?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
-        </a>
-    </li>
-    <?php endforeach; ?>
-</ul>
-<?php endif; ?>
+    <?php if ($this->getCategoryCollection()) : ?>
+        <?php foreach ($this->getCategoryCollection() as $category) : ?> <!-- Voor iedere groep (Verzending, Betalen -->
+            <span class="span6">
+                <dl><?php echo $this->htmlEscape($category->getName()); ?></dl>
+                <div class="accordion" id="accordion-FAQ">
+                    <?php foreach ($this->getItemCollectionByCategory($category) as $item) : ?> <!-- Voor iedere vraag -->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-FAQ" href="#collapse-<?php echo $item->getId() ?>">
+                                    <?php echo $this->htmlEscape($item->getQuestion()); ?>
+                                </a>
+                            </div>
+                            <div id="collapse-<?php echo $item->getId() ?>" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+                                    <?php echo $this->getAnswerHtml($item); ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </span>
+        <?php endforeach; ?>
+    <?php endif ?>
+<?php endif ?>
 
-<h2><?php echo $this->__('Answers'); ?></h2>
-<dl class="faq-items">
-    <?php /** @var $faqItem Flagbit_Faq_Model_Faq */ ?>
-	<?php foreach ($this->getFaqCollection() as $faqItem): ?>
-	<dt id="faq-item-<?php echo $faqItem->getId() ?>">
-		<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
-	</dt>
-	<dd>
-		<?php echo $this->getAnswerHtml($faqItem); ?>
-	</dd>
-	<?php endforeach; ?>
-</dl>
-<?php else: ?>
-<p class="faq-items"><?php echo $this->__('There are no FAQ items at the moment.') ?></p>
-<?php endif; ?>
+</div>
