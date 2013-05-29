@@ -37,6 +37,9 @@
     </default>
     
     <faq_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
         <reference name="content">
             <block type="flagbit_faq/frontend_list" name="faq_list" template="flagbit/faq/grid.phtml"/>
         </reference>

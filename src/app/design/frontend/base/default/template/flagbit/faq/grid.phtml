@@ -24,6 +24,12 @@
  * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 /* @var $this Flagbit_Faq_Block_Frontend_List */
+
+/* Used variables*/
+$_i = 0;
+$_cols = 2;
+$_spanWidth = 12 / $_cols;
+
 ?>
 <div class="page-title">
 	<h1><?php echo $this->__('FAQ'); ?></h1>
@@ -34,18 +40,24 @@
 <?php if ($this->getFaqCollection()->count()): ?>
 
     <?php if ($this->getCategoryCollection()) : ?>
-        <?php foreach ($this->getCategoryCollection() as $category) : ?> <!-- Voor iedere groep (Verzending, Betalen -->
-            <span class="span6">
-                <dl><?php echo $this->htmlEscape($category->getName()); ?></dl>
-                <div class="accordion" id="accordion-FAQ">
-                    <?php foreach ($this->getItemCollectionByCategory($category) as $item) : ?> <!-- Voor iedere vraag -->
+        <?php foreach ($this->getCategoryCollection() as $category) : ?>
+
+        <?php if((($_i*$_spanWidth)%12)==0 && $_i > 0): ?>
+            </div>
+            <div class="row-fluid">
+        <?php endif; ?>
+
+            <span class="span<?php echo $_spanWidth ?>">
+                <h4><?php echo $this->htmlEscape($category->getName()); ?></h4>
+                <div class="accordion" id="accordion-<?php echo $category->getName(); ?>">
+                    <?php foreach ($this->getItemCollectionByCategory($category) as $item) : ?>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-FAQ" href="#collapse-<?php echo $item->getId() ?>">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-<?php echo $category->getName(); ?>" href="#collapse-<?php echo $item->getId() ?>">
                                     <?php echo $this->htmlEscape($item->getQuestion()); ?>
                                 </a>
                             </div>
-                            <div id="collapse-<?php echo $item->getId() ?>" class="accordion-body collapse in">
+                            <div id="collapse-<?php echo $item->getId() ?>" class="accordion-body collapse">
                                 <div class="accordion-inner">
                                     <?php echo $this->getAnswerHtml($item); ?>
                                 </div>
@@ -54,8 +66,12 @@
                     <?php endforeach; ?>
                 </div>
             </span>
+        <?php $_i++;?>
         <?php endforeach; ?>
     <?php endif ?>
-<?php endif ?>
+
+<?php else: ?>
+<p class="faq-items"><?php echo $this->__('There are no FAQ items at the moment.') ?></p>
+<?php endif; ?>
 
 </div>
