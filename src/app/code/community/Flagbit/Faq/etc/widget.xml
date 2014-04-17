@@ -57,67 +57,26 @@
                 <sort_order>10</sort_order>
             </category_id>
             <row_group type="complex" translate="label description" module="ho_bootstrap">
-                <label>Row Name</label>
-                <visible>1</visible>
-                <type>text</type>
-                <sort_order>20</sort_order>
-                <value>row-1</value>
-                <description>
-                    The name of the row in which this widget will be added. The rows will be alphabetically sorted.
-                </description>
-                <helper_block><type>ho_bootstrap/widget_adminhtml_widget_instance_edit_depend_block</type></helper_block>
-            </row_group>
-            <grid_span type="complex" translate="label description" module="ho_bootstrap">
-                <label>Grid Span</label>
+                <label>Grid row number</label>
                 <visible>1</visible>
                 <type>select</type>
-                <values>
-                    <default translate="label"><value>1</value><label>1</label></default>
-                    <two translate="label"><value>2</value><label>2</label></two>
-                    <three translate="label"><value>3</value><label>3</label></three>
-                    <four translate="label"><value>4</value><label>4</label></four>
-                    <five translate="label"><value>5</value><label>5</label></five>
-                    <six translate="label"><value>6</value><label>6</label></six>
-                    <seven translate="label"><value>7</value><label>7</label></seven>
-                    <eight translate="label"><value>8</value><label>8</label></eight>
-                    <nine translate="label"><value>9</value><label>9</label></nine>
-                    <ten translate="label"><value>10</value><label>10</label></ten>
-                    <eleven translate="label"><value>11</value><label>11</label></eleven>
-                    <twelve translate="label"><value>12</value><label>12</label></twelve>
-                </values>
-                <sort_order>20</sort_order>
-                <helper_block><type>ho_bootstrap/widget_adminhtml_widget_instance_edit_depend_block</type></helper_block>
-            </grid_span>
-            <css_class type="complex" translate="label description" module="ho_bootstrap">
-                <label>View options</label>
+                <sort_order>400</sort_order>
+                <value>1</value>
+                <source_model>ho_bootstrap/adminhtml_system_config_source_gridrows</source_model>
+                <helper_block>
+                    <type>ho_bootstrap/widget_adminhtml_widget_instance_edit_depend_block</type>
+                </helper_block>
+            </row_group>
+            <css_class translate="label description" module="ho_bootstrap">
+                <label>CSS grid class</label>
                 <visible>1</visible>
                 <type>multiselect</type>
-                <values>
-                    <hidden_phone_portrait translate="label">
-                        <value>hidden-phone-portrait</value><label>Hidden on phone in portrait</label>
-                    </hidden_phone_portrait>
-                    <hidden_phone translate="label">
-                        <value>hidden-phone</value><label>Hidden on phone</label>
-                    </hidden_phone>
-                    <hidden_tablet translate="label">
-                        <value>hidden-tablet</value><label>Hidden on tablet</label>
-                    </hidden_tablet>
-                    <hidden_desktop translate="label">
-                        <value>hidden-desktop</value><label>Hidden on desktop</label>
-                    </hidden_desktop>
-                    <visible_phone translate="label">
-                        <value>visible-phone</value><label>Only visible on phone</label>
-                    </visible_phone>
-                    <visible_tablet translate="label">
-                        <value>visible-tablet</value><label>Only visible on tablet</label>
-                    </visible_tablet>
-                    <visible_desktop translate="label">
-                        <value>visible-desktop</value><label>Only visible on desktop</label>
-                    </visible_desktop>
-                </values>
-                <sort_order>30</sort_order>
+                <source_model>ho_bootstrap/adminhtml_system_config_source_gridoptions</source_model>
+                <sort_order>410</sort_order>
                 <description>Select multiple values by holding ⌘ on OS X and ctrl on windows.</description>
-                <helper_block><type>ho_bootstrap/widget_adminhtml_widget_instance_edit_depend_block</type></helper_block>
+                <helper_block>
+                    <type>ho_bootstrap/widget_adminhtml_widget_instance_edit_depend_block</type>
+                </helper_block>
             </css_class>
         </parameters>
     </flagbit_faq_category>
