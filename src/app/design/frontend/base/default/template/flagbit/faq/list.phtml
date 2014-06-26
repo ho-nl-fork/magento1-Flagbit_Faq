@@ -35,6 +35,7 @@
 <?php if ($this->getCategoryCollection()) : ?>
 <dl class="faq-list">
     <?php foreach ($this->getCategoryCollection() as $category) : ?>
+        <?php if ($category->getHideFromList()) continue; ?>
         <dt><?php echo $this->htmlEscape($category->getName()); ?></dt>
         <dd>
             <ul class="faq-list">

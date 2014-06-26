@@ -74,6 +74,16 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
                                 '1' => Mage::helper('cms')->__('Enabled'),
                                 '0' => Mage::helper('cms')->__('Disabled') ) ));
 
+        $fieldset->addField('hide_from_list', 'select',
+            array(
+                'label' => Mage::helper('cms')->__('Hide from list'),
+                'name'  => 'hide_from_list',
+                'required'  => true,
+                'options'   => Mage::getModel('adminhtml/system_config_source_yesno')->toArray(),
+                'after_element_html' => '<br /><small>This can be useful when you only want to use this category in a widget.</small>',
+            )
+        );
+
         $form->setValues($model->getData());
         $this->setForm($form);
 

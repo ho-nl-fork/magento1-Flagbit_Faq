@@ -41,6 +41,7 @@ $_spanWidth = 12 / $_cols;
 
     <?php if ($this->getCategoryCollection()) : ?>
         <?php foreach ($this->getCategoryCollection() as $category) : ?>
+            <?php if ($category->getHideFromList()) continue; ?>
 
         <?php if((($_i*$_spanWidth)%12)==0 && $_i > 0): ?>
             </div>
