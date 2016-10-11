@@ -39,6 +39,7 @@ class Flagbit_Faq_Block_Frontend_List_Widget extends Mage_Core_Block_Template
    				->addStoreFilter(Mage::app()->getStore())
                 ->addCategoryFilter($this->getCategoryId())
    				->addIsActiveFilter();
+            $collection->getSelect()->order('sort_order ASC');
 
    			parent::setFaqCollection($collection);
    		}

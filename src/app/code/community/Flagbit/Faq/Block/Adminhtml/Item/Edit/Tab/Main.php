@@ -84,6 +84,12 @@ class Flagbit_Faq_Block_Adminhtml_Item_Edit_Tab_Main extends Mage_Adminhtml_Bloc
             $model->setStoreId(Mage::app()->getStore(true)->getId());
         }
         
+        $fieldset->addField('sort_order', 'text', array(
+                    'label' => Mage::helper('flagbit_faq')->__('Sort Order'),
+                    'title' => Mage::helper('flagbit_faq')->__('Sort Order'),
+                    'name' => 'sort_order',
+                    'required' => false,
+                ));
         $fieldset->addField('is_active', 'select', array(
             'label' => Mage::helper('cms')->__('Status'),
             'title' => Mage::helper('flagbit_faq')->__('Item status'),

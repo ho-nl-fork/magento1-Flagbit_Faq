@@ -41,6 +41,7 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
 				->addStoreFilter(Mage :: app()->getStore())
 				->addIsActiveFilter();
 			
+			$this->_faqCollection->getSelect()->order('sort_order ASC');
 			if (isset($pageSize) && intval($pageSize) && intval($pageSize) > 0) {
 				$this->_faqCollection->setPageSize(intval($pageSize));
 			}

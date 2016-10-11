@@ -85,6 +85,11 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
                 1 => Mage::helper('flagbit_faq')->__('Yes')
             )
         ));
+        $this->addColumn('sort_order', [
+                    'header' => Mage::helper('flagbit_faq')->__('Sort Order'),
+                    'width' => '50px',
+                    'index' => 'sort_order'
+                ]);
         
         $this->addColumn('action', array(
             'header' => Mage::helper('flagbit_faq')->__('Action'),
