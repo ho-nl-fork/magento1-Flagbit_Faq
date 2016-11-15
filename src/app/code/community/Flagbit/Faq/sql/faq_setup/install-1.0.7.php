@@ -42,7 +42,7 @@ CREATE TABLE `{$this->getTable('flagbit_faq/category')}` (
     `is_active` TINYINT(1) NOT NULL DEFAULT 1,
     PRIMARY KEY (`category_id`),
     CONSTRAINT `FK_FAQ_CATEGORY_PARENT_ID` FOREIGN KEY (`parent_id`) REFERENCES `{$this->getTable('flagbit_faq/category')}` (`category_id`) ON DELETE SET NULL
-) ENGINE=InnoDB COMMENT='FAQ Categories';
+) ENGINE=InnoDB CHARSET=utf8 COMMENT='FAQ Categories';
 
 -- DROP TABLE IF EXISTS `{$this->getTable('flagbit_faq/category_item')}`;
 CREATE TABLE `{$this->getTable('flagbit_faq/category_item')}` (
