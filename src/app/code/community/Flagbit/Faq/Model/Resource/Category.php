@@ -104,4 +104,29 @@ class Flagbit_Faq_Model_Resource_Category extends Mage_Core_Model_Resource_Db_Ab
         
         return parent::_afterLoad($object);
     }
+
+    /**
+     * Load category by url key.
+     *
+     * @param           $model
+     * @param string    $urlKey
+     *
+     * @return bool|void
+     */
+    public function loadByUrlKey($model, $urlKey)
+    {
+        if ($urlKey) {
+            $read = $this->_getReadAdapter();
+            $select = $read->select();
+
+            $select->from($this->getMainTable())
+                ->where('url_key = :url_key')
+                ->where('is_active = :is_active');
+            $data = $read->fetchRow($select, ['url_key' => $urlKey, 'is_active' => 1]);
+
+            $model->setData(is_array($data) ? $data : []);
+        } else {
+            return false;
+        }
+    }
 }

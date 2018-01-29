@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Reach Digital (https://www.reachdigital.io/)
+ * See LICENSE.txt for license details.
+ */
+
+/** @var Flagbit_Faq_Block_Frontend_Category $this */
+/** @var Flagbit_Faq_Model_Category $category */
+$category = $this->getCategory();
+?>
+<div class="page-title">
+	<h1><?= $this->escapeHtml($category->getName()); ?></h1>
+</div>
+
+<div class="faq-detail">
+	<div class="faq-content">
+        <?php foreach ($category->getItemCollection() as $item): ?>
+            <?php /** @var Flagbit_Faq_Model_Faq $item */ ?>
+
+            <h3><?= $this->escapeHtml($item->getQuestion()); ?></h3>
+            <?php foreach (explode("\n", $this->escapeHtml($item->getAnswer())) as $paragraph): ?>
+                <p><?= $this->renderText($paragraph); ?></p>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+	</div>
+
+    <p><a href="<?= Mage::app()->getStore()->getUrl('faq'); ?>" title="<?= $this->__('Back to the FAQ overview'); ?>"><?= $this->__('Back to the FAQ overview'); ?></a></p>
+</div>

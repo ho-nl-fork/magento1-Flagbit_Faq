@@ -39,4 +39,11 @@ class Flagbit_Faq_Model_Category extends Mage_Core_Model_Abstract
         }
         return $collection;
     }
+
+    public function loadByUrlKey($urlKey)
+    {
+        $this->_getResource()->loadByUrlKey($this, $urlKey);
+
+        return $this;
+    }
 }
