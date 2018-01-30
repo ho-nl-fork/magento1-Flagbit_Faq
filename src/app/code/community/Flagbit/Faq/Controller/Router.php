@@ -11,6 +11,13 @@ class Flagbit_Faq_Controller_Router extends Mage_Core_Controller_Varien_Router_S
      */
     public function match(Zend_Controller_Request_Http $request)
     {
+        if (! Mage::isInstalled()) {
+            Mage::app()->getFrontController()->getResponse()
+                ->setRedirect(Mage::getUrl('install'))
+                ->sendResponse();
+            exit;
+        }
+
         if (!$this->_beforeModuleMatch()) {
             return false;
         }
