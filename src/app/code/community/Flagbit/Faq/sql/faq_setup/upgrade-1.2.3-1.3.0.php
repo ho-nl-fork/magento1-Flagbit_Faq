@@ -17,8 +17,15 @@ $installer->getConnection()->addColumn($installer->getTable('flagbit_faq/categor
 ]);
 
 foreach (Mage::getResourceModel('flagbit_faq/category_collection') as $category) {
-    $category->setData('url_key', str_replace([' '], '-', strtolower($category->getData('category_name'))));
-    $category->setData('url_key', str_replace(['.', '?'], '', strtolower($category->getData('category_name'))));
+    /** @var Flagbit_Faq_Model_Category $category */
+
+    /** @noinspection PhpParamsInspection */
+    $category->load();
+
+    $categoryName = str_replace([' ', '.', '?'], ['-', '', ''], strtolower($category->getData('category_name')));
+    $category->setData('url_key', $categoryName);
+    $category->setData('stores', $category->getData('store_id'));
+
     $category->save();
 }
 
