@@ -115,7 +115,14 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
     {
         // check if data sent
         if ($data = $this->getRequest()->getPost()) {
-            
+            $category = Mage::getModel('flagbit_faq/category')->loadByUrlKey($data['url_key']);
+            if ($category->getId() != $this->getRequest()->getParam('category_id')) {
+                unset($category);
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('flagbit_faq')->__('Node with same URL Key already exists.'));
+                $this->_redirect('*/*/edit', ['category_id' => $this->getRequest()->getParam('category_id')]);
+                return;
+            }
+
             // init model and set data
             $category = Mage::getModel('flagbit_faq/category');
             $category->setData($data);

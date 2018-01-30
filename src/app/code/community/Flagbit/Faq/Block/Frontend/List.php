@@ -23,6 +23,13 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
         if ($head = $this->getLayout()->getBlock('head')) {
             $head->setTitle($this->htmlEscape($this->__('Frequently Asked Questions')) . ' - ' . $head->getTitle());
         }
+
+        if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
+            /** @var Mage_Page_Block_Html_Breadcrumbs $breadcrumbs */
+
+            $breadcrumbs->addCrumb('home', ['label' => Mage::helper('cms')->__('Home'), 'title' => Mage::helper('cms')->__('Go to Home Page'), 'link' => Mage::getBaseUrl()]);
+            $breadcrumbs->addCrumb('faq', ['label' => Mage::helper('flagbit_faq')->__('FAQ'), 'title' => Mage::helper('flagbit_faq')->__('FAQ'), 'readonly' => true]);
+        }
     }
 	
 	/**

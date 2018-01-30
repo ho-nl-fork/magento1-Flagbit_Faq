@@ -45,6 +45,15 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
             'required' => true,
         ));
 
+        $fieldset->addField('url_key', 'text', [
+            'name'      => 'url_key',
+            'class'     => 'validate-identifier',
+            'label'     => Mage::helper('flagbit_faq')->__('Url Key'),
+            'title'     => Mage::helper('flagbit_faq')->__('Url Key'),
+            'note'      => Mage::helper('flagbit_faq')->__('Relative to Website Base URL'),
+            'required'  => true
+        ]);
+
         /**
          * Check is single store mode
          */
