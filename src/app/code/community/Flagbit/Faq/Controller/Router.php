@@ -52,26 +52,29 @@ class Flagbit_Faq_Controller_Router extends Mage_Core_Controller_Varien_Router_S
             }
         }
 
-        $faqCategory = Mage::getModel('flagbit_faq/category')->loadByUrlKey($p[1]);
-        if ($faqCategory->getId()) {
-            $request->setAlias(
-                Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS,
-                ltrim($request->getOriginalPathInfo(), '/')
-            );
-            $request->setModuleName($module);
-            $request->setControllerName($front->getDefault('controller'));
-            $request->setActionName('category');
+        if (isset($p[1])) {
+            $faqCategory = Mage::getModel('flagbit_faq/category')->loadByUrlKey($p[1]);
 
-            $request->setParam('url_key', $p[1]);
+            if ($faqCategory->getId()) {
+                $request->setAlias(
+                    Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS,
+                    ltrim($request->getOriginalPathInfo(), '/')
+                );
+                $request->setModuleName($module);
+                $request->setControllerName($front->getDefault('controller'));
+                $request->setActionName('category');
 
-            $controllerClassName = $this->_validateControllerClassName('Flagbit_Faq', $front->getDefault('controller'));
-            $controllerInstance = Mage::getControllerInstance($controllerClassName, $request, $front->getResponse());
+                $request->setParam('url_key', $p[1]);
 
-            // dispatch action
-            $request->setDispatched();
-            $controllerInstance->dispatch('category');
+                $controllerClassName = $this->_validateControllerClassName('Flagbit_Faq', $front->getDefault('controller'));
+                $controllerInstance = Mage::getControllerInstance($controllerClassName, $request, $front->getResponse());
 
-            return true;
+                // dispatch action
+                $request->setDispatched();
+                $controllerInstance->dispatch('category');
+
+                return true;
+            }
         }
 
         return false;
