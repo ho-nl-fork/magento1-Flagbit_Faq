@@ -52,7 +52,8 @@ class Flagbit_Faq_Controller_Router extends Mage_Core_Controller_Varien_Router_S
             }
         }
 
-        if ($module === 'faq') {
+        $faqCategory = Mage::getModel('flagbit_faq/category')->loadByUrlKey($p[1]);
+        if ($faqCategory->getId()) {
             $request->setAlias(
                 Mage_Core_Model_Url_Rewrite::REWRITE_REQUEST_PATH_ALIAS,
                 ltrim($request->getOriginalPathInfo(), '/')
