@@ -113,49 +113,47 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
      */
     public function saveAction()
     {
-        // check if data sent
         if ($data = $this->getRequest()->getPost()) {
-            $category = Mage::getModel('flagbit_faq/category')->loadByUrlKey($data['url_key']);
-            if ($category->getId() != $this->getRequest()->getParam('category_id')) {
+            $category = Mage::getModel('flagbit_faq/category')->loadByUrlKey($data['url_key'], false);
+
+            if ($category->getId() && (int) $category->getId() !== (int) $this->getRequest()->getParam('category_id')) {
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('flagbit_faq')->__("Node '%s' has the same URL Key.", $category->getName())
+                );
+                Mage::getSingleton('adminhtml/session')->setFormData($data);
+
                 unset($category);
-                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('flagbit_faq')->__('Node with same URL Key already exists.'));
                 $this->_redirect('*/*/edit', ['category_id' => $this->getRequest()->getParam('category_id')]);
                 return;
             }
 
-            // init model and set data
+            // Init model and set data.
             $category = Mage::getModel('flagbit_faq/category');
             $category->setData($data);
-            
-            // try to save it
+
             try {
-                // save the data
                 $category->save();
-                
-                // display success message
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                        Mage::helper('flagbit_faq')->__('FAQ Category was successfully saved')
+                    Mage::helper('flagbit_faq')->__('FAQ Category was successfully saved.')
                 );
-                // clear previously saved data from session
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-                // check if 'Save and Continue'
+
+                // Check if 'Save and Continue'.
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array (
-                            'category_id' => $category->getId() ));
+                    $this->_redirect('*/*/edit', ['category_id' => $category->getId()]);
                     return;
                 }
             }
             catch (Exception $e) {
-                // display error message
                 Mage::getSingleton('adminhtml/session')->addException($e, $e->getMessage());
-                // save data in session
                 Mage::getSingleton('adminhtml/session')->setFormData($data);
-                // redirect to edit form
-                $this->_redirect('*/*/edit', array (
-                        'category_id' => $this->getRequest()->getParam('category_id') ));
+
+                $this->_redirect('*/*/edit', ['category_id' => $this->getRequest()->getParam('category_id')]);
                 return;
             }
         }
+
         $this->_redirect('*/*/');
     }
 

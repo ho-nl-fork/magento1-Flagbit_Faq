@@ -40,9 +40,15 @@ class Flagbit_Faq_Model_Category extends Mage_Core_Model_Abstract
         return $collection;
     }
 
-    public function loadByUrlKey($urlKey)
+    /**
+     * @param string    $urlKey
+     * @param bool      $activeOnly
+     *
+     * @return Flagbit_Faq_Model_Category
+     */
+    public function loadByUrlKey($urlKey, $activeOnly = true)
     {
-        $this->_getResource()->loadByUrlKey($this, $urlKey);
+        $this->_getResource()->loadByUrlKey($this, $urlKey, $activeOnly);
 
         return $this;
     }
