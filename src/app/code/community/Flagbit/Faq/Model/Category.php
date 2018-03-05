@@ -32,11 +32,15 @@ class Flagbit_Faq_Model_Category extends Mage_Core_Model_Abstract
     public function getItemCollection()
     {
         $collection = $this->getData('item_collection');
-        if (is_null($collection)) {
-            $collection = Mage::getSingleton('flagbit_faq/faq')->getCollection()
-                ->addCategoryFilter($this);
+
+        if ($collection === null) {
+            $collection = Mage::getResourceModel('flagbit_faq/faq_collection')
+                ->addCategoryFilter($this)
+                ->addStoreFilter(Mage::app()->getStore()->getId());
+
             $this->setData('item_collection', $collection);
         }
+
         return $collection;
     }
 
