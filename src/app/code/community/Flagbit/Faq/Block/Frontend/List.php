@@ -82,9 +82,8 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
 	 */
 	public function getItemCollectionByCategory(Flagbit_Faq_Model_Category $category)
 	{
-	    return $category->getItemCollection()->addIsActiveFilter()->addStoreFilter(Mage::app()->getStore());
+	    return $category->getItemCollection()->addIsActiveFilter();
 	}
-
 
     /**
      * @param $faqItem
