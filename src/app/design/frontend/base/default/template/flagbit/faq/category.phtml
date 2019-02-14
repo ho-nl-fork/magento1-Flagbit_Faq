@@ -19,7 +19,7 @@ $category = $this->getCategory();
                 <?php /** @var Flagbit_Faq_Model_Faq $item */ ?>
 
                 <h4 id="faq-<?= $item->getId();?>"><?= $this->escapeHtml($item->getQuestion()); ?></h4>
-                <?php foreach (explode("\n", $this->escapeHtml($item->getAnswer())) as $paragraph): ?>
+                <?php foreach (explode("\n", $item->getAnswer()) as $paragraph): ?>
                     <p><?= $this->renderText($paragraph); ?></p>
                 <?php endforeach; ?>
             </div>
